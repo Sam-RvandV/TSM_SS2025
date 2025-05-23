@@ -49,7 +49,7 @@ void generate_endpoints_data(const char *filename,
         perror("Failed to open endpoints data file");
         return;
     }
-    fprintf(fp, "r,x_end\n");
+    fprintf(fp, "r,x\n");
     printf("Generating endpoints data for r in [%.3Lf, %.3Lf] with step %.4Lf...\n", r_min_ld, r_max_ld, r_step_ld);
     printf("%d trajectories of length %d per r value.\n", n_trajectories_per_r, m_length_of_trajectory);
 
@@ -90,7 +90,7 @@ void generate_endpoints_data(const char *filename,
                     x = logistic_map_double_x_ld_r(x, r_ld);
                 }
                 
-                int len = snprintf(thread_output_buffer + current_buffer_pos, MAX_LINE_LEN, "%.8Lf,%.15f\n", r_ld, x);
+                int len = snprintf(thread_output_buffer + current_buffer_pos, MAX_LINE_LEN, "%.6Lf,%.8f\n", r_ld, x);
                 if (len > 0 && len < MAX_LINE_LEN) {
                     current_buffer_pos += len;
                 }
@@ -273,11 +273,11 @@ int main(int argc, char **argv) {
     srand((unsigned int)time(NULL));
 
     // --- Part 1: Generate Endpoints Data (using OpenMP) ---
-    // printf("Part 1: Generating endpoints data for plotting (using OpenMP)...\n");
-    // // Use long double for r in this part for speed, range 0-4 doesn't need MPFR for plotting.
-    // generate_endpoints_data("endpoints_data_mpfr.csv",
-    //                         0.0L, 4.0L, 0.001L,
-    //                         1000, 500, 1);
+    printf("Part 1: Generating endpoints data for plotting (using OpenMP)...\n");
+    // Use long double for r in this part for speed, range 0-4 doesn't need MPFR for plotting.
+    generate_endpoints_data("endpoints_data_3_445_4.csv", // bifurcation_data.csv, endpoints_data (_mpfr)
+                            3.445L, 4L, 0.00002L,
+                            1000, 5000, 1);
 
     // --- Part 2: Find Bifurcation Points (MPFR) and Estimate Feigenbaum Constant ---
     printf("\nPart 2: Finding bifurcation points (MPFR) and Feigenbaum delta...\n");

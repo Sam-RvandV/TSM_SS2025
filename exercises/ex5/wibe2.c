@@ -65,7 +65,7 @@ void generate_endpoints_data(const char *filename,
         perror("Failed to open endpoints data file");
         return;
     }
-    fprintf(fp, "r,x_end\n"); // CSV header
+    fprintf(fp, "r,x\n"); // CSV header
     printf("Generating endpoints data for r in [%.3Lf, %.3Lf] with step %.4Lf...\n", r_min, r_max, r_step);
     printf("%d trajectories of length %d per r value.\n", n_trajectories_per_r, m_length_of_trajectory);
 
