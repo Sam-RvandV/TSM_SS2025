@@ -275,9 +275,9 @@ int main(int argc, char **argv) {
     // --- Part 1: Generate Endpoints Data (using OpenMP) ---
     printf("Part 1: Generating endpoints data for plotting (using OpenMP)...\n");
     // Use long double for r in this part for speed, range 0-4 doesn't need MPFR for plotting.
-    generate_endpoints_data("endpoints_data_3_445_4.csv", // bifurcation_data.csv, endpoints_data (_mpfr)
-                            3.445L, 4L, 0.00002L,
-                            1000, 5000, 1);
+    // generate_endpoints_data("endpoints_data_3_445_4.csv", // bifurcation_data.csv, endpoints_data (_mpfr)
+    //                         3.445L, 4L, 0.00002L,
+    //                         1000, 5000, 1);
 
     // --- Part 2: Find Bifurcation Points (MPFR) and Estimate Feigenbaum Constant ---
     printf("\nPart 2: Finding bifurcation points (MPFR) and Feigenbaum delta...\n");
