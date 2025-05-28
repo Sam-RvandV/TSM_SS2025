@@ -281,7 +281,7 @@ int main(int argc, char **argv) {
 
     // --- Part 2: Find Bifurcation Points (MPFR) and Estimate Feigenbaum Constant ---
     printf("\nPart 2: Finding bifurcation points (MPFR) and Feigenbaum delta...\n");
-    const int MAX_BIFURCATIONS_TO_FIND = 23; // Reduced for reasonable runtime with MPFR
+    const int MAX_BIFURCATIONS_TO_FIND = 10; // Reduced for reasonable runtime with MPFR
     mpfr_t r_bif[MAX_BIFURCATIONS_TO_FIND];
     mpfr_t deltas[MAX_BIFURCATIONS_TO_FIND - 2];
     mpfr_array_init(r_bif, MAX_BIFURCATIONS_TO_FIND);
